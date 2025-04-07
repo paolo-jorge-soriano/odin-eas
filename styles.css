@@ -3,13 +3,15 @@ body {
     flex-direction: column;
     height: 100vh;
     margin: 0;
+    font-family: "Roboto", "Arial", "serif";
 }
 
 .header-container {
     display:flex;
-    background-color: beige;
+    background-color: #4668b9;
     justify-content: center;
     align-items: center;
+    color: white;
 }
 
 .main-container {
@@ -18,6 +20,7 @@ body {
     flex: 1;
     justify-content: space-evenly;
     align-items: center;
+    background-color: #f5f5f5;
 }
 
 .controls-container {
@@ -27,7 +30,18 @@ body {
 }
 
 .controls-container button {
+    border: 2px solid black;
+    border-radius: 10px;
     padding: 10px 30px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.active-state {
+    background-color: black;
+    color: white;
 }
 
 .sketch-container {
@@ -36,12 +50,20 @@ body {
     width: 640px;
     height: 640px;
     border: 3px solid black;
+    background-color: white;
 }
 
 .footer-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aliceblue;
+    background-color: #4668b9;
+    color: white;
 }
 
+/* SHOW GRIDLINES */
+/* .block {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    flex: 1 0 auto;
+} */
