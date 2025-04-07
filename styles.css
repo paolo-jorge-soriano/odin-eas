@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+.header-container {
+    display:flex;
+    background-color: beige;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.sketch-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 640px;
+    height: 640px;
+    border: 3px solid black;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+}
+
