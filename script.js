@@ -10,6 +10,7 @@ const btnRainbowMode = document.getElementById("btn-rainbow-mode");
 const btnEraserMode = document.getElementById("btn-eraser-mode");
 const btnResetGrid = document.getElementById("btn-reset-grid");
 const btnSetGridSize = document.getElementById("btn-set-grid-size");
+const btnToggleGridlines = document.getElementById("btn-toggle-gridlines");
 
 // Initialize default values
 let gridSize = DEFAULT_GRID_SIZE;
@@ -17,6 +18,7 @@ let currentColor = DEFAULT_COLOR;
 let currentMode = DEFAULT_MODE;
 let isSketching = false;
 btnColorMode.classList.add("active-state");
+let isGridlinesVisible = false;
 
 // FUNCTIONS
 function setColor() {
@@ -43,6 +45,7 @@ function setColor() {
 
 function setGrid(size) {
     const blockSize = 640 / size;
+    sketchContainer.innerHTML = "";
 
     for (let i = 0; i < size * size; i++) {
         const block = document.createElement("div");
@@ -67,10 +70,11 @@ function setGrid(size) {
     }
 }
 
-function resetGrid() {
-    sketchContainer.innerHTML = "";
-    setGrid(gridSize);
-}
+// function resetGrid() {
+//     sketchContainer.innerHTML = "";
+//     setGrid(gridSize);
+//     isGridlinesVisible = false;
+// }
 
 // DOM
 document.addEventListener("mouseup", () => {
@@ -103,7 +107,7 @@ btnEraserMode.addEventListener("click", () => {
 });
 
 btnResetGrid.addEventListener("click", () => {
-    resetGrid();
+    setGrid(gridSize);
 });
 
 btnSetGridSize.addEventListener("click", () => {
@@ -116,12 +120,29 @@ btnSetGridSize.addEventListener("click", () => {
 
     else if (Number.isInteger(Number(userInput)) && Number(userInput) > 0 && Number(userInput) <= 100) {
         gridSize = parseInt(userInput);
-        resetGrid(gridSize);
+        setGrid(gridSize);
     }
     
     else {
         alert("Please enter a number from 1 to 100 only.");
     }
+});
+
+btnToggleGridlines.addEventListener("click", () => {
+    isGridlinesVisible = !isGridlinesVisible;
+    const blocks = document.querySelectorAll(".block");
+
+    if (isGridlinesVisible) {
+        blocks.forEach(block => {
+            block.classList.add("border");
+        });
+    }
+
+    else if (!isGridlinesVisible) {
+        blocks.forEach(block => {
+            block.classList.remove("border");
+        });
+    }   
 });
 
 // Main
