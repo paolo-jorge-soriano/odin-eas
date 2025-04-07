@@ -1,29 +1,27 @@
 // VARIABLES
 const DEFAULT_GRID_SIZE = 16;
 const DEFAULT_COLOR = "#000000";
-const DEFAULT_COLOR_MODE = "color";
+const DEFAULT_MODE = "color";
 
 const sketchContainer = document.getElementById("sketchContainer");
 const colorPicker = document.getElementById("color-picker");
 const btnResetGrid = document.getElementById("btn-reset-grid");
+const btnColorMode = document.getElementById("btn-color-mode");
+const btnRainbowMode = document.getElementById("btn-rainbow-mode");
 
 // Initialize default values
 let gridSize = DEFAULT_GRID_SIZE;
 let currentColor = DEFAULT_COLOR;
-let colorMode = DEFAULT_COLOR_MODE;
+let currentMode = DEFAULT_MODE;
 let isSketching = false;
 
 // FUNCTIONS
-function setColorMode() {
-    // TODO
-}
-
 function setColor() {
-    if (colorMode === "color") {
+    if (currentMode === "color") {
         currentColor = colorPicker.value;
     }
 
-    else if (colorMode === "rainbow") {
+    else if (currentMode === "rainbow") {
         const hexadecimal = "0123456789ABCDEF";
         let randomColor = "#";
 
@@ -69,6 +67,14 @@ function resetGrid() {
 }
 
 // DOM
+btnColorMode.addEventListener("click", () => {
+    currentMode = "color";
+});
+
+btnRainbowMode.addEventListener("click", () => {
+    currentMode = "rainbow";
+});
+
 colorPicker.addEventListener("input", (e) => {
     currentColor = e.target.value;
 });
