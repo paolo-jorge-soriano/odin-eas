@@ -70,11 +70,23 @@ function setGrid(size) {
     }
 }
 
-// function resetGrid() {
-//     sketchContainer.innerHTML = "";
-//     setGrid(gridSize);
-//     isGridlinesVisible = false;
-// }
+function toggleGridines() {
+    const blocks = document.querySelectorAll(".block");
+
+    if (isGridlinesVisible) {
+        btnToggleGridlines.classList.add("active-state");
+        blocks.forEach(block => {
+            block.classList.add("border");
+        });
+    }
+
+    else if (!isGridlinesVisible) {
+        btnToggleGridlines.classList.remove("active-state");
+        blocks.forEach(block => {
+            block.classList.remove("border");
+        });
+    }
+}
 
 // DOM
 document.addEventListener("mouseup", () => {
@@ -108,6 +120,7 @@ btnEraserMode.addEventListener("click", () => {
 
 btnResetGrid.addEventListener("click", () => {
     setGrid(gridSize);
+    toggleGridines();
 });
 
 btnSetGridSize.addEventListener("click", () => {
@@ -121,6 +134,7 @@ btnSetGridSize.addEventListener("click", () => {
     else if (Number.isInteger(Number(userInput)) && Number(userInput) > 0 && Number(userInput) <= 100) {
         gridSize = parseInt(userInput);
         setGrid(gridSize);
+        toggleGridines();
     }
     
     else {
@@ -130,19 +144,8 @@ btnSetGridSize.addEventListener("click", () => {
 
 btnToggleGridlines.addEventListener("click", () => {
     isGridlinesVisible = !isGridlinesVisible;
-    const blocks = document.querySelectorAll(".block");
-
-    if (isGridlinesVisible) {
-        blocks.forEach(block => {
-            block.classList.add("border");
-        });
-    }
-
-    else if (!isGridlinesVisible) {
-        blocks.forEach(block => {
-            block.classList.remove("border");
-        });
-    }   
+    
+    toggleGridines();
 });
 
 // Main
